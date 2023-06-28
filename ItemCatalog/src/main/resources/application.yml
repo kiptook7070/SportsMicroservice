@@ -1,0 +1,43 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: ITEM-CATALOG-SERVICE
+  spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show_sql: true
+
+  datasource:
+    url: jdbc:mariadb://localhost:3306/sports_microservice
+    username: root
+    password:
+    driverClassName: org.mariadb.jdbc.Driver
+
+eureka:
+  client:
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    region: default
+    registryFetchIntervalSeconds: 5
+    service-url:
+      defaultZone: http://localhost:9090/eureka
+
+
+  instance:
+    nonSecurePort: 80
+    hostname: localhost
+    leaseRenewalIntervalInSeconds: 5
+
